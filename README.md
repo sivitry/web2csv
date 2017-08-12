@@ -1,6 +1,8 @@
 # web2csv
 extract data from html and download as csv file
 
+Because escape characters problem, please download raw file, https://github.com/sivitry/web2csv/raw/master/README.md
+
 
 // extract data from html and download as csv file
 
