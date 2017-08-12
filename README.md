@@ -49,10 +49,15 @@ s = "";
 s = s+"#, PaperTitle, Year, ConfName, CitedBy \n"
 
 for(a in x) s = s + (parseInt(a)+1) +"," 
+
 +x[a].getElementsByTagName('a')[0].innerText.replace(/\,/g,"_") +"," 
+
 +x[a].getElementsByTagName('td')[2].getElementsByTagName('span')[0].innerText +"," 
+
 +x[a].getElementsByTagName('div')[1].innerText.replace(/\,/g, "_") +"," 
+
 +x[a].getElementsByTagName('a')[1].innerText +"," 
+
 +"\n";
 
 
