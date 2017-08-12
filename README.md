@@ -34,7 +34,7 @@ x = $x('//*[@id="gsc_a_b"]/tr/td[1]/a')
 
 s = "";
 
-for(a in x) s=s+x[a].innerText+"\n";
+for(a in x) s = s + (parseInt(a)+1) + "," + x[a].innerText+"\n";
 
 
 // prepare http header and data to be download
