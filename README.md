@@ -19,22 +19,41 @@ https://scholar.google.com/citations?user=jQLg-_UAAAAJ&hl=en
 '//*[@id="gsc_a_b"]/tr[56]/td[1]/a'
 
 
+//*[@id="gsc_a_b"]/tr[1]
+
+
 [XPath Pattern]
 
 '//*[@id="gsc_a_b"]/tr/td[1]/a'
+
 
 [Chrome Debug]
 
 // get all paper node
 
-x = $x('//*[@id="gsc_a_b"]/tr/td[1]/a') 
+x = $x('//*[@id="gsc_a_b"]/tr') 
 
 
 // extract paper name and concate
 
+// PaperTitle:	x[a].getElementsByTagName('a')[0].innerText.replace(/\,/g,"_")
+
+// Year: 		x[a].getElementsByTagName('td')[2].getElementsByTagName('span')[0].innerText
+
+// ConfName: 	x[a].getElementsByTagName('div')[1].innerText.replace(/\,/g, "_")
+
+// CitedBy:		x[a].getElementsByTagName('a')[1].innerText
+
 s = "";
 
-for(a in x) s = s + (parseInt(a)+1) + "," + x[a].innerText+"\n";
+s = s+"#, PaperTitle, Year, ConfName, CitedBy \n"
+
+for(a in x) s = s + (parseInt(a)+1) +"," 
++x[a].getElementsByTagName('a')[0].innerText.replace(/\,/g,"_") +"," 
++x[a].getElementsByTagName('td')[2].getElementsByTagName('span')[0].innerText +"," 
++x[a].getElementsByTagName('div')[1].innerText.replace(/\,/g, "_") +"," 
++x[a].getElementsByTagName('a')[1].innerText +"," 
++"\n";
 
 
 // prepare http header and data to be download
@@ -56,4 +75,5 @@ link.setAttribute("download", "my_data.csv");
 
 document.body.appendChild(link); 
 
-link.click();
+link.click(); 
+
